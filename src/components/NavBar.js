@@ -1,5 +1,5 @@
-import React, { useContext, useEffect } from "react";
-import { Layout, Button, message } from "antd";
+import React, { useContext, useEffect, useState } from "react";
+import { Layout, Button, message, Popover } from "antd";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../userContext";
 import { CalendarOutlined } from "@ant-design/icons";
@@ -11,6 +11,15 @@ const { Header } = Layout;
 const Navbar = () => {
   const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
+  const [open, setOpen] = useState(false);
+
+  const hide = () => {
+    setOpen(false);
+  };
+
+  const handleOpenChange = () => {
+    setOpen(true);
+  };
 
   useEffect(() => {
     const fetchAuth = async () => {
@@ -53,6 +62,13 @@ const Navbar = () => {
     navigate("/");
   };
 
+  const content = (
+    <div>
+      <p>Name: {user ? user.name : ""}</p>
+      <p>Email: {user ? user.emailId : ""}</p>
+      <a onClick={hide}>Close</a>
+    </div>
+  );
   return (
     <Header className="header">
       <div className="logo-container">
@@ -62,7 +78,15 @@ const Navbar = () => {
       <div className="nav-buttons">
         {user ? (
           <>
-            <div className="user-name">{user.name}</div>
+            <Popover
+              className="user-name"
+              open={open}
+              onOpenChange={handleOpenChange}
+              content={content}
+              title="User Details"
+            >
+              <Button type="primary">Profile</Button>
+            </Popover>
             <Button className="logout-button" onClick={handleLogout}>
               Logout
             </Button>

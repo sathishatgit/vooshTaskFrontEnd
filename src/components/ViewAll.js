@@ -83,6 +83,12 @@ const ViewAll = ({ title, task }) => {
     }
   };
 
+  const truncateDescription = (description, maxLength) => {
+    return description.length > maxLength
+      ? description.slice(0, maxLength) + "..."
+      : description;
+  };
+
   return (
     <div className="view-all-container">
       <Modal
@@ -149,7 +155,7 @@ const ViewAll = ({ title, task }) => {
           <List.Item>
             <Card className="task-card">
               <h3>{taskItem.title}</h3>
-              <p>{taskItem.description}</p>
+              <p>{truncateDescription(taskItem.description, 50)}</p>
               <p>Created at: {new Date(taskItem.createdAt).toLocaleString()}</p>
               <Button
                 onClick={() => deleteTask(taskItem._id)}

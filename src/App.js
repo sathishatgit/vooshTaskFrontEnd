@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Login from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
+import { UserContext } from "./userContext";
+import { ConfigProvider, Layout } from "antd";
+import Task from "./pages/Task";
+import Navbar from "./components/NavBar";
+import Error from "./pages/Error";
 
-function App() {
+const App = () => {
+  const { user } = useContext(UserContext);
+
+  console.log(user ? user : "No data");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <ConfigProvider>
+        <Layout>
+          <Navbar />
+          {!user ? (
+            <Routes>
+              <Route path="/" element={<Login />} />
+              <Route path="/signUp" element={<SignUp />} />
+              <Route path="*" element={<Error />} />
+            </Routes>
+          ) : (
+            <Routes>
+              <Route path="/" element={<Task />} />
+              <Route path="*" element={<Error />} />
+            </Routes>
+          )}
+        </Layout>
+      </ConfigProvider>
+    </Router>
   );
-}
+};
 
 export default App;

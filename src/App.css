@@ -1,38 +1,304 @@
-.App {
-  text-align: center;
+.sign-in-container {
+  width: 500px;
+  margin: auto;
+  padding-top: 80px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.form-item {
+  margin-bottom: 16px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.google-login-button {
+  width: 70%;
+  margin: auto;
+  margin-top: 20px;
+  font-size: 14px;
+}
+.button-size {
+  width: 250px;
+}
+@media (max-width: 768px) {
+  .sign-in-container {
+    width: 90%;
+    padding-top: 40px;
+  }
+
+  .google-login-button {
+    width: 90%;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@media (max-width: 480px) {
+  .sign-in-container {
+    width: 100%;
+    padding-top: 40px;
+  }
+
+  .google-login-button {
+    width: 70%;
+    margin: auto;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  .form-size {
+    width: 80%;
+    margin: auto;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 10px;
+  }
+}
+
+.header {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background: #1890ff;
+  padding: 0 20px;
+  flex-wrap: wrap;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}
+
+.header .logo-container {
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+  gap: 10px;
+}
+
+.header .logo-container .calendar-icon {
+  font-size: 24px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.header .logo-container h2 {
+  color: white;
+  margin-left: 10px;
+  font-size: 1.5rem;
+  margin: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.header .nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  flex: 1 1 auto;
+  justify-content: flex-end;
+}
+
+.header .nav-buttons .user-name {
+  color: white;
+  margin-right: 10px;
+  font-size: 1rem;
+}
+
+.header .nav-buttons .logout-button {
+  color: white;
+  background-color: #c42604;
+  border: none;
+}
+
+.header .nav-buttons .signup-button {
+  margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0 20px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .header .logo-container h2 {
+    font-size: 1rem;
+  }
+
+  .header .nav-buttons .user-name,
+  .header .nav-buttons .logout-button,
+  .header .nav-buttons .login-button,
+  .header .nav-buttons .signup-button {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 0 20px;
+    gap: 20px;
+    flex-direction: column;
+  }
+
+  .header .logo-container h2 {
+    font-size: 1rem;
+  }
+
+  .header .nav-buttons .user-name,
+  .header .nav-buttons .logout-button,
+  .header .nav-buttons .login-button,
+  .header .nav-buttons .signup-button {
+    font-size: 0.6rem;
+  }
+
+  .header .nav-buttons .signup-button {
+    margin-left: 5px;
+  }
+  .nav-buttons {
+    gap: 0px;
+  }
+}
+
+.sign-up-container {
+  width: 500px;
+  margin: auto;
+  padding-top: 70px;
+}
+
+.ant-form-item {
+  margin-bottom: 16px;
+}
+
+.align-center {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+@media (max-width: 768px) {
+  .sign-up-container {
+    width: 90%;
+    padding-top: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sign-up-container {
+    width: 100%;
+    padding-top: 70px;
+  }
+
+  .ant-btn {
+    font-size: 14px;
+  }
+}
+
+.task-container {
+  margin: 10px;
+}
+
+.task-controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  margin-top: 20px;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  width: 50%;
+}
+
+.sort-by-size {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: end;
+  gap: 10px;
+  width: 25%;
+}
+
+.sort-select {
+  width: 30%;
+}
+
+.task-lists {
+  display: flex;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .task-container {
+    padding: 0 5px;
+  }
+
+  .search-container {
+    width: 100%;
+    flex-direction: row;
+    gap: 5px;
+  }
+  .sort-by-size {
+    width: 100%;
+    justify-content: start;
+  }
+  .task-lists {
+    flex-direction: column;
+  }
+
+  .task-controls {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.view-all-container {
+  width: 33.33%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 5px 15px;
+}
+
+.view-all-title {
+  background-color: #5894f4;
+  padding: 8px;
+  color: white;
+  border-radius: 2px;
+}
+
+.task-card {
+  background-color: #d8e4fc;
+}
+
+.edit-button {
+  margin-left: 10px;
+  color: white;
+  background-color: #5894f4;
+}
+
+.view-details-button {
+  margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+  .view-all-container {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .task-card {
+    font-size: 14px;
+  }
+}
+
+.add-task-button {
+  margin-bottom: 10px;
+  width: 15%;
+  margin-top: 76px;
+}
+
+.add-task-modal .ant-modal-body {
+  padding: 16px;
+}
+
+@media (max-width: 768px) {
+  .add-task-button {
+    width: 100%;
+    margin-top: 76px;
+  }
+
+  .add-task-modal .ant-modal-body {
+    padding: 8px;
   }
 }

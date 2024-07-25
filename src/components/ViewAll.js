@@ -161,6 +161,7 @@ const ViewAll = ({ title, task }) => {
                 onClick={() => deleteTask(taskItem._id)}
                 type="primary"
                 danger
+                className="delete-button"
               >
                 Delete
               </Button>

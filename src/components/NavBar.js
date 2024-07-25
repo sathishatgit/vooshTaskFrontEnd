@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Layout, Button, message, Popover } from "antd";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../userContext";
+import { LoaderContext, UserContext } from "../userContext";
 import { CalendarOutlined } from "@ant-design/icons";
 import axios from "axios";
 import "../App.css";
@@ -11,6 +11,7 @@ const { Header } = Layout;
 const Navbar = () => {
   const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
+  const { setLoader } = useContext(LoaderContext);
   const [open, setOpen] = useState(false);
 
   const hide = () => {
@@ -49,6 +50,8 @@ const Navbar = () => {
       } catch (error) {
         console.error("Error during authentication request:", error);
         message.error("Authentication failed. Please try again.");
+      } finally {
+        setLoader(false);
       }
     };
 

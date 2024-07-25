@@ -33,6 +33,7 @@ const Navbar = () => {
             }
           );
           setUser(mongoRequest.data.userAuth);
+
           navigate("/");
         } else if (localStorage.getItem("googleToken")) {
           const response = await axios.get(
@@ -44,7 +45,6 @@ const Navbar = () => {
             }
           );
           setUser({ emailId: response.data.email, name: response.data.name });
-          message.success("Login Successfully");
           navigate("/");
         }
       } catch (error) {

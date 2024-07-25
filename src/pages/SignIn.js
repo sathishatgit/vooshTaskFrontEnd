@@ -32,7 +32,10 @@ const SignIn = () => {
       );
       console.log("User data:", response.data);
 
-      message.success("Login Successful");
+      notification.success({
+        message: "Authentication Sucessful",
+        description: `Welcome ${response.data.email}`,
+      });
       setUser({ emailId: response.data.email, name: response.data.name });
       navigate("/");
     } catch (error) {
@@ -65,7 +68,10 @@ const SignIn = () => {
         `${process.env.REACT_APP_API}user/signin`,
         { emailId, password }
       );
-      message.success("Login Successful");
+      notification.success({
+        message: "Authentication Sucessful",
+        description: `Welcome ${emailId}`,
+      });
       setUser(response.data.userTokenData);
       localStorage.setItem("mongoToken", response.data.authToken);
       navigate("/");
